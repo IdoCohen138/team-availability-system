@@ -8,6 +8,10 @@ A small full‑stack project that lets team members log in, update their current
 
 
 ## Quick Start (Docker)
+
+**Prerequisites**: Make sure you have Docker and Docker Compose installed on your system.
+- [Download Docker Desktop](https://docs.docker.com/get-docker/)
+
 1. Create a `.env` file with the required environment variables (see Configuration section below).
 2. Create a `seed_users.json` file in the backend directory (see Seed Users Configuration below).
 3. Build & run:
