@@ -1,0 +1,38 @@
+[
+  {
+    "username": "mjackson",
+    "full_name": "Michael Jackson",
+    "password": "pass123",
+    "status": "On Vacation"
+  },
+  {
+    "username": "avico",
+    "full_name": "Avi Cohen", 
+    "password": "pass123",
+    "status": "Working"
+  },
+  {
+    "username": "dtesler",
+    "full_name": "Diana Tesler",
+    "password": "pass123", 
+    "status": "On Vacation"
+  },
+  {
+    "username": "ymorris",
+    "full_name": "Yossi Morris",
+    "password": "pass123",
+    "status": "Working"
+  },
+  {
+    "username": "drodin",
+    "full_name": "Danny Rodin",
+    "password": "pass123",
+    "status": "Business Trip"
+  },
+  {
+    "username": "efi",
+    "full_name": "Efi",
+    "password": "pass123",
+    "status": "On Vacation"
+  }
+]
