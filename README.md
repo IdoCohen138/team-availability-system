@@ -8,19 +8,49 @@ A small full‑stack project that lets team members log in, update their current
 
 
 ## Quick Start (Docker)
-1. Copy `.env.example` to `.env` and adjust values if needed.
-2. Build & run:
+1. Create a `.env` file with the required environment variables (see Configuration section below).
+2. Create a `seed_users.json` file in the backend directory (see Seed Users Configuration below).
+3. Build & run:
 ```bash
 docker compose up --build
 ```
 
 ## Configuration
 
+### Environment Variables
+
+Create a `.env` file in the project root with the following variables:
+
+```bash
+# Database Configuration
+POSTGRES_DB=team_availability
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=your_secure_password
+
+# JWT Authentication
+JWT_SECRET=your_jwt_secret_key_here
+
+# Application Settings
+SEED=1
+CORS_ORIGINS=http://localhost:5173
+
+# Frontend API URL
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+**Environment Variables Explanation:**
+- `POSTGRES_DB`: Database name for the PostgreSQL instance
+- `POSTGRES_USER`: Username for PostgreSQL authentication
+- `POSTGRES_PASSWORD`: Password for PostgreSQL authentication
+- `JWT_SECRET`: Secret key for JWT token generation (use a strong, random string)
+- `SEED`: Set to 1 to enable database seeding, 0 to disable
+- `CORS_ORIGINS`: Allowed origins for CORS (comma-separated if multiple)
+- `VITE_API_BASE_URL`: Backend API URL for the frontend to connect to
+
 ### Seed Users Configuration
 
 The system requires a `seed_users.json` file to create initial users. Without this file, you'll get a warning and no users will be created.
 
-#### Option 1: Default File (Recommended)
 Create a `seed_users.json` file in the backend directory:
 ```json
 [
@@ -33,28 +63,6 @@ Create a `seed_users.json` file in the backend directory:
 ]
 ```
 
-#### Option 2: Custom File Location
-Set `SEED_USERS_FILE` environment variable in your `.env` file:
-```bash
-# Use default file (copied during build)
-SEED_USERS_FILE=/app/seed_users.json
-
-# Or point to a custom file (you'll need to mount it)
-SEED_USERS_FILE=/app/custom_users.json
-```
-
-#### Option 3: Mount Custom File
-If you want to use a different file, mount it in `docker-compose.yml`:
-```yaml
-volumes:
-  - ./my_custom_users.json:/app/custom_users.json:ro
-```
-And set in `.env`:
-```bash
-SEED_USERS_FILE=/app/custom_users.json
-```
-
 **Note**: 
-- Container paths start with `/app/`
-- Default file is automatically copied during build
-- If no seed users configuration is found, the system will show a warning and continue without creating any users.
+- The default file is automatically copied during build
+- If no seed users configuration is found, the system will show a warning and continue without creating any users
